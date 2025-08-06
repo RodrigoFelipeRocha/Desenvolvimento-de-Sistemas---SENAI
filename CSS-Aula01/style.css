@@ -57,3 +57,44 @@ h3{
     top: 10px;
     right: 670px;
 }
+
+/* Corpo do HTML - toda página */
+body {
+    /* Altera a cor do fundo */
+    background-color: grey;
+    /* Altera a imagem de fundo do elemento */
+    background-image: url(https://media.tenor.com/-nWoYzx6zFwAAAAM/nascar-tongue.gif);
+    /* Define a repetição das imagens no fundo */
+    background-repeat: no-repeat;
+    /* Define a posição da imagem */
+    /* background-position: center; */
+
+    /* Define o tamanho da imagem de fundo */
+    background-size: 100vw 100vh;
+}   
+.visuais{
+    background-color: red;
+    opacity: 75%;
+    box-shadow: 15px 5px 10px 1px;
+    /* Arredonda o elemento */
+    border-radius: 35px;
+    /* Transforma o elemento - rotacionar */
+    transform: rotate(1turn);
+    transition: width 2s, height 2s, transform 2s;
+}
+
+.visuais:hover{
+    width: 215px;
+    height: 215px;
+    transform: rotate(10turn);
+    background-color: brown;
+}
+
+.cursor{
+    /* Controla o scroll do elemento */
+    overflow-y: auto;
+    overflow-x: auto;
+    /* Modificar cursor */
+    cursor: pointer;
+}
+
