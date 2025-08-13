@@ -15,3 +15,19 @@ article{
 .texto{
     text-align: center;
 }
+
+.box{
+    /* Define a largura - vw */
+    width: 1836px;
+    /* Define a altura - vh */
+    height: 200px;
+    /* Define o espaço externo - margem */
+    margin: 20px 5px 25px 20px;
+    /* Define o espaço interno */
+    padding: 5px;
+    /* Define a borda */
+    border: 1px solid rgb(255, 255, 255);
+    /* Definir a cor do fundo */
+    background-color: lightgray;    
+}
+
