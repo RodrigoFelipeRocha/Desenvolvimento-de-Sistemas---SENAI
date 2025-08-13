@@ -1,0 +1,17 @@
+main{
+    display: flex;
+    flex-direction: row;
+}
+section{
+    width: 50%;
+}
+article{
+    display: flex;
+    flex-direction: row;
+}
+.correio{
+    flex-direction: column;
+}
+.texto{
+    text-align: center;
+}
