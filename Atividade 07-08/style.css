@@ -1,13 +1,30 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+p{
+    font-size: medium;
+    margin-left: 20px;
+}
 main{
     display: flex;
     flex-direction: row;
+    margin-left:25px;
+    margin-right:25px;
+    margin-bottom: 10px;
 }
 section{
     width: 50%;
+    border: 1px solid rgb(233, 232, 232);
+    
 }
 article{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    margin-left: 30px;
+    margin-top: 15px;
 }
 .correio{
     flex-direction: column;
@@ -18,7 +35,7 @@ article{
 
 .box{
     /* Define a largura - vw */
-    width: 1836px;
+    width: 1288px;
     /* Define a altura - vh */
     height: 200px;
     /* Define o espaço externo - margem */
@@ -29,5 +46,59 @@ article{
     border: 1px solid rgb(255, 255, 255);
     /* Definir a cor do fundo */
     background-color: lightgray;    
+}
+.feedbacks{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.textocenter{
+    display: flex;
+    justify-content: center;
+    
+}
+h1{
+text-align: center;
+color: white;
+margin: auto;
+margin-top: 10;
+
+background-image: url(https://thumbs.dreamstime.com/z/salada-de-frutas-fechada-em-tela-inteira-como-fundo-peda%C3%A7os-frutos-do-raznfh-fechados-cheia-fatias-frescos-e-saud%C3%A1veis-para-uma-212192604.jpg);
+background-repeat: no-repeat;
+background-size: 100vw 78vh;
+padding: 70px;
+margin: 0.5vw 0.5vh
+
+}
+.baixo{
+    bottom: 10px;
+}
+footer{
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid rgb(233, 232, 232);
+}
+div{
+    padding: 20px;
+}
+header{
+    margin-bottom: 28px;
+    border: 1px solid rgb(233, 232, 232);
+    margin: 25px;
+    padding: 15px;
+}
+input{
+    width: 575px;
+    margin-bottom: 25px;
+    margin-top: 38px;
+    margin-left: 24px;
+   
+}
+.textinho{
+    margin-bottom: 25px;
+}
+iframe{
+   margin-left: 38px;
+
 }
 
