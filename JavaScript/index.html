@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Não utilizar nesse lugar (HEAD)
+    </script>
+</head>
+<body>
+    <p id="Paragrafo">Script que escreve olá</p>
+    <p id="id">Seletor de id</p>
+    <p class="classe">Seletor de classe 1</p>
+    <p class="classe">Seletor de classe 2</p>
+    <h1 id="text">Text</h1>
+    <div id="div">
+        Texto de Exemplo
+    </div>
+    <img id="Mcqueen" src="https://i.ytimg.com/vi/lkn_OjfdZZA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDRsZO41aqbLoEJJj48Yj7cai1mKA" width="150px" height="150px" >
+
+    <button id="fundo">Trocar a cor de Fundo</button>
+    <button onclick="trocar()">Troca de Fundo 2</button>
+    
+    <script>
+        // Tipos de console
+        console.log("Hello world.");
+        // console.info("Console.info");
+        // console.error("Error");
+        // console.warn("Aviso!");
+        document.write("Olá");
+
+        // Seleção de elementos
+        // Por ID
+        const p = document.getElementById("Paragrafo");
+        console.log(p);
+
+        // Por seletor CSS
+        const id = document.querySelector("#id");
+        const classe = document.querySelector(".classe");
+        console.log(id);
+        console.log(classe);
+        const classes = document.querySelectorAll(".classe");
+        console.log(classes);
+        // Pega o texto do elemento
+        console.log(id.innerText);
+
+        // Manipulação de HTML
+
+        let text = document.getElementById("text");
+        console.log(text.textContent);
+        // Altera somente o texto
+        text.textContent = "Hello world Manipulado!";
+        // Altera o HTML de dentro do elemento
+        let div = document.getElementById("div");
+        console.log(div.innerHTML)
+        // O button foi somente para provar que conseguimos manipular qualquer coisa deste jeito dentro do elemento
+        div.innerHTML = "<h3>Manipulação de HTML</h3> <button>test</button>";
+        console.log(div.innerHTML);
+
+        // Manipulação de Atributos
+
+        let imgMcqueen = document.getElementById("Mcqueen");
+        console.log(imgMcqueen.getAttribute("src"));
+        // Altera o atributo de um elemento
+        // setAtribbute("Atributo", "novoAtributo");
+        imgMcqueen.setAttribute("src", "https://rollingstone.com.br/media/_versions/ratatouille-foto-divulgacao-pixar_widelg.jpg");
+        // Conseguimos Manipular outros atributos não adicionados anteriormente
+        imgMcqueen.setAttribute("alt", "Imagem de um personagem Rato - Filme Ratatouille");
+        // Remover atributos
+        imgMcqueen.removeAttribute("alt");
+
+        // Manipulação do CSS
+        
+        imgMcqueen.style.borderRadius = "90px";
+        imgMcqueen.style.border = "4px solid green";
+
+        // Eventos
+
+        // Evento de trocar a cor de fundo do site
+        let fundo = document.getElementById("fundo");   
+        let troca = true;
+        fundo.addEventListener("click", () => {
+            if(troca){
+            document.body.style.backgroundColor="red"
+            troca=false
+            }else{
+            document.body.style.backgroundColor="pink";
+            troca = true;
+            }
+        });
+
+        function trocar(){
+            document.body.style.backgroundColor="orange";
+        }
+
+    </script>
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>
