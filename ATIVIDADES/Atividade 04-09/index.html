@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Atividade 04-09</title>
 </head>
 <body>
@@ -13,7 +14,10 @@
     <div>
         <img id="imagem" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEjbWeWgLHoZ-PN5nvLUmYYLJGPXYncchD9lcZ-lXViuXGVQ6L6ZdJbDJpUOO93GKbOlQ&usqp=CAU" alt="">
     </div>
-    
+    <button id="trocarCor"> Clique para trocar a cor do quadrado</button>
+    <div id="quadrado"></div>
+
+
     <script>
         let listTextoT = document.getElementById("listTitulo");
         let listTextoP = document.getElementById("listParagrafo");
@@ -44,12 +48,11 @@
 
                 contador++
             }
-            if(contador==4){
+            if(contador==3){
                 contador = 0
-            }
-        })
+            } 
 
-        switch(contador){
+            switch(contador){
             case 0:
                 receberImagem.setAttribute("src","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEjbWeWgLHoZ-PN5nvLUmYYLJGPXYncchD9lcZ-lXViuXGVQ6L6ZdJbDJpUOO93GKbOlQ&usqp=CAU")
             break;
@@ -62,6 +65,24 @@
         default:
             contador=0
             }
+        })
+        let botaoQuadrado = document.getElementById("trocarCor");
+        let confirma = true;
+        let quadrado1 = document.getElementById("quadrado");
+        botaoQuadrado.addEventListener("click", () =>{
+        
+            if(confirma){
+                quadrado1.style.backgroundColor = "blue";
+                confirma = false;
+                
+            }
+            else{
+                quadrado1.style.backgroundColor = "black";
+                confirma = true;
+                
+            }
+
+        })
 
 
     </script>
