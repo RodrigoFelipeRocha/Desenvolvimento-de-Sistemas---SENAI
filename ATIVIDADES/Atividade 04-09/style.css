@@ -60,3 +60,35 @@ body{
     justify-content: center;
     margin-bottom: 15px;
 }
+.corPaginaBot{
+    margin-top: 40px;
+    height: 40px; 
+    display: flex;
+    justify-content: space-around;    
+    margin-bottom: 30px;
+}
+#botaoPreto{
+    background-color: black;
+    color: white;
+    
+}
+#botaoAmarelo{
+    background-color: yellow;
+}
+#botaoAzul{
+    background-color: blue;
+    color: white;
+}
+#botaoVermelho{
+    background-color: red;
+    color: white;
+}
+.textoDecorado {
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, 'Courier New', Courier, monospace;
+    font-size: medium;
+    color: blue;
+}
+#botao{
+    margin-bottom: 30px;
+}

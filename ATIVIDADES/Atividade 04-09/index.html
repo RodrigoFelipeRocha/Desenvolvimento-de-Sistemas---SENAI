@@ -58,14 +58,18 @@
 
     </p>
     <h3 class="TmudarCorPag">Área para mudar cor da página</h3>
-    <div>
-        <button>Preto</button> <!--Preto-->
-        <button>Branco</button> <!--Branco-->
-        <button>Amarelo</button> <!--Amarelo-->
-        <button>Azul</button> <!--Azul-->
-        <button>Vermelho</button> <!--Vermelho-->
-        <button>Padrão</button> <!--Branco-->
+    <div class="corPaginaBot">
+        <button id="botaoPreto">Preto</button> <!--Preto-->
+        <button id="botaoBranco">Branco</button> <!--Branco-->
+        <button id="botaoAmarelo">Amarelo</button> <!--Amarelo-->
+        <button id="botaoAzul">Azul</button> <!--Azul-->
+        <button id="botaoVermelho">Vermelho</button> <!--Vermelho-->
+        <button id="botaoPadrao">Padrão</button> <!--Branco-->
     </div>
+
+    <P id="textoDecorado" class="textoDecorado">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi mollitia illum maxime officia saepe architecto nihil, quos error sequi, voluptas, facilis doloribus veniam voluptatibus cupiditate nemo minus iure atque consequatur.</P>
+    <input id="botao" type="button" value="Ligar/Desligar classe CSS">
+
     <script>
     
         let listTextoT = document.getElementById("listTitulo");
@@ -163,6 +167,44 @@
         let somar = document.getElementById("soma");
         somar.addEventListener("click", () =>{
             resultado.innerText = Number(pNumero.value) + Number(sNumero.value);
+        })
+        let botaoPreto1 = document.getElementById("botaoPreto");
+        let botaoAmarelo1 = document.getElementById("botaoAmarelo");
+        let botaoAzul1 = document.getElementById("botaoAzul");
+        let botaoVermelho1 = document.getElementById("botaoVermelho");
+        let botaoBranco1 = document.getElementById("botaoBranco");
+        let botaoPadrao1 = document.getElementById("botaoPadrao");
+
+        botaoPreto1.addEventListener("click", () =>{
+            document.body.style.backgroundColor = "black";
+        })
+        botaoAmarelo1.addEventListener("click", () =>{
+            document.body.style.backgroundColor = "yellow";
+        })
+        botaoAzul1.addEventListener("click", () =>{
+            document.body.style.backgroundColor = "blue";
+        })
+        botaoVermelho1.addEventListener("click", () =>{
+            document.body.style.backgroundColor = "red";
+        })
+        botaoBranco1.addEventListener("click", () =>{
+            document.body.style.backgroundColor = "white";
+        })
+        botaoPadrao1.addEventListener("click", () =>{
+            document.body.style.backgroundColor = "white";
+        })
+
+        const textoDecorado = document.getElementById("textoDecorado")
+        const button = document.getElementById("botao")
+        let confirmar = false;
+        button.addEventListener("click", () => {
+            if (!confirmar) {
+                textoDecorado.classList.add("textoDecorado")
+                confirmar = true
+            } else {
+                textoDecorado.classList.remove("textoDecorado")
+                confirmar = false
+            }
         })
       
 
