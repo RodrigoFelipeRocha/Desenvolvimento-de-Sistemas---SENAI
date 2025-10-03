@@ -13,17 +13,15 @@ const produtos = [
 // let nextId = 3;
 
 //Mostrando produtos que possuem estoque
-app.get("/produtos", (req,res) =>{
-    if(produtos.emEstoque === true){
-       res.send(produtos);
-    }
-    res.status(200).send("Produto temporariamente fora de estoque");
+app.get("/produtos/", (req,res) =>{
+    let emEstoque = produtos.filter(p => p.emEstoque === true);
+    res.status(200).send(emEstoque);
+ 
 });
 
 //Procurando pelo nome
-app.get("/produtos/nome", (req,res)=>{
-    const nome = (req.body.nome);
-    console.log("oi");
+app.get("/produtos/:nome", (req,res)=>{
+    const nome = (req.params.nome);
     const produto = produtos.find(p => p.nome == nome);
 
     if(!produto){
@@ -32,23 +30,26 @@ app.get("/produtos/nome", (req,res)=>{
     res.status(200).send(produto);
 });
 
+// Alterando o preco do produto
 app.patch("/produtos/:id", (req,res) =>{
     const id = parseInt(req.params.id);
-    const produto = findIndex(p => p.id == id);
+    let index = produtos.findIndex(p => p.id == id);
 
-    if(!produto){
+    if(!index){
         res.status(404).send("Produto não encontrado!");
     }
-    const novoPreco = req.body.preco;
-
-    produto.preco = novoPreco;
-    res.status(200).send("Preço atualizado com sucesso");
+    let novoPreco = req.body.preco;
+    produtos[index].preco = novoPreco;
     
-
+    res.status(200).send("Preço atualizado com sucesso para " + novoPreco);
     
-
 });
 
+app.put("/produtos/:id", (req,res)=>{
+    const id = parseInt(req.params.id);
+    let index = produtos.findIndex(p => p.id == id);
+
+});
 
 
 
