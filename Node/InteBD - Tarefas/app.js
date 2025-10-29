@@ -144,17 +144,56 @@ app.delete('/tarefas/:id', async (req, res) => {
 });
 
 app.get('/tarefa', async (req,res)=>{
-  const pesquisa = req.params.q;
-  try {
-    const palavraPesquisada = `%${pesquisa}%`;
-    const [result] =  await db.query('select * from tarefas where titulo like ?', [palavraPesquisada]);
-    res.json(result);
-  } catch (error) {
-    console.log(error);
+  const pesquisa = req.query.q;
+
+  if(!pesquisa){
+    return res
+          .status(400)
+          .send("É necessário informar o parâmetro 'q' para buscar");
+
   }
 
+  try{
+    const [rows] = await db.query(
+      "SELECT * FROM tarefas WHERE titulo LIKE ?",
+      [`%${pesquisa}%`]
+    );
 
+    return res.send(rows);
+  } catch (err) {
+    console.error("Erro ao pesquisar tarefas:", err.message);
+    return res.status(500).send("Erro interno do servidor");
+  }
 });
+  
+app.get("/tarefas/status", async (req,res) =>{
+  try {
+    const [rows] = await db.query(`
+    SELECT
+      COUNT(CASE WHEN concluida = 1 THEN 1 END) AS concluidas,
+      COUNT(CASE WHEN concluida = 0 THEN 1 END) AS pendentes
+      FROM tarefas
+    `);
+
+    const { concluidas, pendentes} = rows[0];
+    return res.send({ concluidas, pendentes});
+  
+  } catch (err){
+    console.error("Erro ao buscar status das tarefas:", err.message);
+    return res.status(500).send("Erro interno do servidor");
+  }
+});
+  
+  // const pesquisa = req.params.q;
+  // try {
+  //   const palavraPesquisada = `%${pesquisa}%`;
+  //   const [result] =  await db.query('select * from tarefas where titulo like ?', [palavraPesquisada]);
+  //   res.json(result);
+  // } catch (error) {
+  //   console.log(error);
+  // }
+// });
+
 
 
 
