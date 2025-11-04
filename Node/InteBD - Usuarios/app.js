@@ -120,6 +120,28 @@ app.delete("/Usuarios", async (req, res) => {
   }
 });
 
+app.delete('/dados_usuarios/:id', async (req, res) => {
+  const id = parseInt(req.params.id);
+
+  if (isNaN(id)) {
+    return res.status(400).send('ID inválido. O ID deve ser um número.');
+  }
+
+  try {
+    const [result] = await db.query('DELETE FROM dados_usuarios WHERE id = ?', [id]);
+
+    if (result.affectedRows > 0) { // affectedRows indica quantas linhas foram afetadas
+      res.status(204).send(); // Retorna status 204 (No Content) - sucesso sem corpo de resposta
+    } else {
+      res.status(404).send('Dados não encontrados para exclusão.');
+    }
+  } catch (error) {
+    console.error(`Erro ao excluir dados com ID ${id}:`, error);
+    res.status(500).send('Erro interno do servidor ao excluir dados.');
+  }
+});
+
+
 // ... (Suas rotas virão aqui) ...
 
 app.listen(port, () => {
