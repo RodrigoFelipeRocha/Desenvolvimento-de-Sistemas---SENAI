@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px;
+    height: 8%;
+}   
+body{
+    display: flex;
+    flex-direction: column;
+    height: 92%;
+}
+
+.separarBarra{
+    margin: 1px solid black;
+    display: flex;
+    height: 100%;
+}
+.telaPrincipal{
+    width: 75%;
+    display: flex;
+}
+.barraEsquerda{
+    width: 7%;
+}
+.main{
+    width: 93%;
+}
+
+
+.areaPessoinha{
+    width: 5%;
+}
+.areaPesquisa{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+.barraPesquisa{
+    display: flex;
+
+}
+.imgPessoinha{
+height: 40px;
+width: 40px;
+}
