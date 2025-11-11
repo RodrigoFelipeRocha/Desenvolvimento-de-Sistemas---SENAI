@@ -1,49 +1,119 @@
-*{
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
     margin: 0;
-}
-header{
+    padding-top: 50px;
+  }
+  
+  .container {
+    background-color: #fff;
+    width: 420px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .task-input {
     display: flex;
-    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .task-input input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .task-input button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .task-input button:hover {
+    background-color: #0056b3;
+  }
+  
+  .filters {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+  }
+  
+  .filters button {
+    background: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .filters .active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .task-item {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin: 20px;
-    height: 8%;
-}   
-body{
-    display: flex;
-    flex-direction: column;
-    height: 92%;
-}
-
-.separarBarra{
-    margin: 1px solid black;
-    display: flex;
-    height: 100%;
-}
-.telaPrincipal{
-    width: 75%;
-    display: flex;
-}
-.barraEsquerda{
-    width: 7%;
-}
-.main{
-    width: 93%;
-}
-
-
-.areaPessoinha{
-    width: 5%;
-}
-.areaPesquisa{
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-}
-.barraPesquisa{
-    display: flex;
-
-}
-.imgPessoinha{
-height: 40px;
-width: 40px;
-}
+    background-color: #f9fafb;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+  }
+  
+  .task-item.completed span {
+    text-decoration: line-through;
+    color: #888;
+  }
+  
+  .task-item input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: #007bff;
+  }
+  
+  .actions button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 6px;
+  }
+  
+  .actions button:hover {
+    transform: scale(1.2);
+  }
+  
+  .empty {
+    text-align: center;
+    color: #888;
+    border: 2px dashed #ccc;
+    border-radius: 6px;
+    padding: 20px;
+    display: none;
+  }
+  
