@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gerenciador de Tarefas</title>
+  <title>Gerenciador + API Posts</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -26,11 +26,17 @@
     <div id="emptyState" class="empty">
       <p>📝 Nenhuma tarefa adicionada ainda.</p>
     </div>
+
+    <hr>
+
+    <h2>Posts da API</h2>
+    <input id="searchPosts" type="text" placeholder="Buscar posts pelo título...">
+    <ul id="postsList" class="task-list"></ul>
   </div>
 
-  <!-- 🧠 SCRIPT FUNCIONAL -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // ====== GERENCIADOR DE TAREFAS ======
       const taskInput = document.getElementById("taskInput");
       const addTaskBtn = document.getElementById("addTaskBtn");
       const taskList = document.getElementById("taskList");
@@ -39,17 +45,15 @@
 
       let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-      // 🔹 Salvar no localStorage
       function saveTasks() {
         localStorage.setItem("tasks", JSON.stringify(tasks));
       }
 
-      // 🔹 Renderizar tarefas
       function renderTasks() {
         taskList.innerHTML = "";
         const activeFilter = document.querySelector(".filter-btn.active").dataset.filter;
-
         let filteredTasks = tasks;
+
         if (activeFilter === "pending") filteredTasks = tasks.filter(t => !t.completed);
         if (activeFilter === "completed") filteredTasks = tasks.filter(t => t.completed);
 
@@ -77,11 +81,9 @@
         });
       }
 
-      // 🔹 Adicionar tarefa
       function addTask() {
         const text = taskInput.value.trim();
         if (!text) return;
-
         const newTask = { id: Date.now(), text, completed: false };
         tasks.push(newTask);
         saveTasks();
@@ -89,7 +91,6 @@
         renderTasks();
       }
 
-      // 🔹 Alternar concluída
       function toggleTask(id) {
         const task = tasks.find(t => t.id == id);
         if (task) {
@@ -99,14 +100,12 @@
         }
       }
 
-      // 🔹 Excluir tarefa
       function deleteTask(id) {
         tasks = tasks.filter(t => t.id != id);
         saveTasks();
         renderTasks();
       }
 
-      // 🔹 Editar tarefa
       function editTask(id) {
         const task = tasks.find(t => t.id == id);
         const newText = prompt("Editar tarefa:", task.text);
@@ -117,7 +116,6 @@
         }
       }
 
-      // 🧠 Eventos
       addTaskBtn.addEventListener("click", addTask);
       taskInput.addEventListener("keypress", e => {
         if (e.key === "Enter") addTask();
@@ -141,8 +139,42 @@
         });
       });
 
-      // 🔹 Inicializar
       renderTasks();
+
+      // ====== POSTS DA API ======
+      const postsList = document.getElementById("postsList");
+      const searchInput = document.getElementById("searchPosts");
+      let posts = [];
+
+      async function fetchPosts() {
+        try {
+          const res = await fetch("http://localhost:3000/api/posts");
+          posts = await res.json();
+          renderPosts(posts);
+        } catch (err) {
+          postsList.innerHTML = "<li>Erro ao carregar posts.</li>";
+        }
+      }
+
+      function renderPosts(list) {
+        postsList.innerHTML = "";
+        if (list.length === 0) postsList.innerHTML = "<li>Nenhum post encontrado.</li>";
+        list.forEach(post => {
+          const li = document.createElement("li");
+          li.className = "task-item";
+          li.innerHTML = `<strong>${post.title}</strong><p>${post.body}</p>`;
+          postsList.appendChild(li);
+        });
+      }
+
+      searchInput.addEventListener("input", () => {
+        const filtered = posts.filter(post =>
+          post.title.toLowerCase().includes(searchInput.value.toLowerCase())
+        );
+        renderPosts(filtered);
+      });
+
+      fetchPosts();
     });
   </script>
 </body>
